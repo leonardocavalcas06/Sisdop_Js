@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Nome do site na aba -->
+  <title>Sisdop</title>
+
+  <!-- Ícone do site (favicon) -->
+  <!-- Salve sua imagem como "favicon.png" (a árvore) na mesma pasta do arquivo -->
+  <link rel="icon" type="image/png" sizes="32x32" href="Árvore do sisdop favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Árvore do sisdop favicon.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    section {
+      display: none;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    section.active {
+      display: flex;
+    }
+
+    .logo-container, .logo {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+    }
+
+    .logo-container img, .logo {
+      width: 180px;
+      height: auto;
+    }
+
+    .btn-voltar {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      background-color: #2e7d32;
+      color: #fff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background-color 0.3s;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    .btn-voltar:hover {
+      background-color: #1b5e20;
+    }
+
+    .login-container {
+      text-align: center;
+      background: #fff;
+      padding: 50px 60px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    .login-container h1 {
+      color: #2e7d32;
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+
+    .login-container p.subtitle {
+      color: #555;
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+    }
+
+    .input-field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .input-field label {
+      color: #2e7d32;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+    }
+
+    .input-field input {
+      padding: 10px;
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-field input:focus {
+      border-color: #2e7d32;
+      box-shadow: 0 0 5px rgba(46, 125, 50, 0.4);
+    }
+
+    .btn-login {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 12px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    .btn-login:hover {
+      background-color: #1b5e20;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #777;
+      margin: 25px 0;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .divider:not(:empty)::before {
+      margin-right: .75em;
+    }
+
+    .divider:not(:empty)::after {
+      margin-left: .75em;
+    }
+
+    .btn-google {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 25px;
+      padding: 10px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 500;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .btn-google img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .btn-google:hover {
+      background-color: #f5f5f5;
+    }
+
+    .register-link {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .register-link a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    .select-container {
+      text-align: center;
+    }
+
+    .options {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      margin-top: 60px;
+    }
+
+    .option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .option:hover {
+      transform: scale(1.05);
+    }
+
+    .icon {
+      background-color: #008000;
+      border-radius: 50%;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .icon svg {
+      width: 70px;
+      height: 70px;
+      stroke: #fff;
+      stroke-width: 3;
+      fill: none;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 40px;
+      width: 70%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    form label {
+      text-align: left;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    form input {
+      width: 100%;
+      padding: 10px 15px;
+      border: 2px solid #000;
+      border-radius: 25px;
+      font-size: 14px;
+    }
+
+    form button {
+      grid-column: span 2;
+      background-color: #008000;
+      color: #fff;
+      border: none;
+      padding: 12px 40px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.2s;
+      margin-top: 20px;
+    }
+
+    form button:hover {
+      background-color: #006b00;
+    }
+
+    .menu-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .sidebar {
+      width: 180px;
+      background-color: #f5f5f5;
+      border-right: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px 10px;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      margin: 15px 0;
+      width: 100%;
+      text-align: left;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .sidebar a:hover {
+      background-color: #008000;
+      color: #fff;
+    }
+
+    .main {
+      flex: 1;
+      background-color: #0c4022;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main img {
+      width: 600px;
+      height: auto;
+      opacity: 0.95;
+    }
+  </style>
+
+  <!-- SDK Google -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <section id="login" class="active">
+    <div class="logo-container">
+      <img src="logo sisdop.png" alt="Logo SISDOP">
+    </div>
+    <div class="login-container">
+      <h1>Seja bem-vindo</h1>
+      <p class="subtitle">Efetue seu login</p>
+      <div class="input-field">
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" placeholder="Digite seu usuário">
+      </div>
+      <div class="input-field">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" placeholder="Digite sua senha">
+      </div>
+      <button class="btn-login" onclick="showSection('menu')">Entrar</button>
+
+      <div class="divider">Ou</div>
+
+      <div id="g_id_onload"
+        data-client_id="419883131167-ffkeqm4hbc5a7rlhjb5e4afsqu1ekcdg.apps.googleusercontent.com"
+        data-callback="handleCredentialResponse">
+      </div>
+
+      <div class="g_id_signin"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="continue_with"
+        data-shape="pill"
+        data-logo_alignment="left">
+      </div>
+
+      <p class="register-link">Ainda não se cadastrou? <a href="#" onclick="showSection('select')">Cadastre-se agora</a></p>
+    </div>
+  </section>
+
+  <!-- SELEÇÃO -->
+  <section id="select">
+    <img src="logo sisdop.png" alt="Logo SISDOP" class="logo">
+    <button class="btn-voltar" onclick="showSection('login')">Voltar</button>
+    <div class="select-container">
+      <h2>Selecione o tipo de cadastro:</h2>
+      <div class="options">
+        <div class="option" onclick="showSection('user')">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          </div>Usuário
+        </div>
+        <div class="option" onclick="showSection('company')">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" ry="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </div>Empresa
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CADASTRO USUÁRIO -->
+  <section id="user">
+    <img src="logo sisdop.png" alt="Logo SISDOP" class="logo">
+    <button class="btn-voltar" onclick="showSection('select')">Voltar</button>
+    <div>
+      <h2>Cadastro de Usuário:</h2>
+      <form onsubmit="event.preventDefault(); showSection('login')">
+        <div><label>Nome:</label><input type="text" required></div>
+        <div><label>Sobrenome:</label><input type="text" required></div>
+        <div><label>E-mail:</label><input type="email" required></div>
+        <div><label>Número de celular:</label><input type="tel" required></div>
+        <div><label>Senha:</label><input type="password" required></div>
+        <div><label>Tipo de Usuário:</label><input type="text" required></div>
+        <div><label>Confirme sua senha:</label><input type="password" required></div>
+        <div><label>CPF:</label><input type="text" required></div>
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CADASTRO EMPRESA -->
+  <section id="company">
+    <img src="logo sisdop.png" alt="Logo SISDOP" class="logo">
+    <button class="btn-voltar" onclick="showSection('select')">Voltar</button>
+    <div>
+      <h2>Cadastro de Empresa:</h2>
+      <form onsubmit="event.preventDefault(); showSection('login')">
+        <div><label>Nome da ONG:</label><input type="text" required></div>
+        <div><label>E-mail:</label><input type="email" required></div>
+        <div><label>CNPJ:</label><input type="text" required></div>
+        <div><label>Número de celular:</label><input type="tel" required></div>
+        <div><label>Senha:</label><input type="password" required></div>
+        <div><label>Confirme sua senha:</label><input type="password" required></div>
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="menu-container">
+      <nav class="sidebar">
+        <a onclick="showSection('menu')">Menu</a>
+        <a>ONGs</a>
+        <a>Usuários</a>
+        <a>Consulta</a>
+        <a>Ações</a>
+        <a onclick="showSection('login')">Sair</a>
+      </nav>
+      <main class="main">
+        <img src="logo sisdop 3.0.png" alt="Logo SISDOP">
+      </main>
+    </div>
+  </section>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+
+    // LOGIN GOOGLE
+    function handleCredentialResponse(response) {
+      const data = JSON.parse(atob(response.credential.split('.')[1]));
+      console.log("Usuário Google:", data);
+      alert(`Bem-vindo, ${data.name}!`);
+      showSection('menu');
+    }
+  </script>
+
+</body>
+</html>

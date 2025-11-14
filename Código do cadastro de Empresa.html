@@ -1,0 +1,145 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Empresa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .logo {
+      position: absolute;
+      top: 55px;
+      left: 55px;
+      width: 200px;
+    }
+
+    h2 {
+      color: #008000;
+      margin-top: 100px;
+      margin-bottom: 40px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 40px;
+      justify-content: center;
+      align-items: center;
+      width: 70%;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 15px;
+      border: 2px solid #000;
+      border-radius: 25px;
+      font-size: 14px;
+    }
+
+    .password-field {
+      position: relative;
+    }
+
+    .password-field svg {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      stroke: #000;
+      cursor: pointer;
+    }
+
+    button {
+      grid-column: span 2;
+      background-color: #008000;
+      color: #fff;
+      border: none;
+      padding: 12px 40px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.2s;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #006b00;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="logo sisdop.png" alt="Logo SISDOP" class="logo">
+
+  <h2>Cadastro de Empresa:</h2>
+
+  <form action="#" method="post">
+    <div>
+      <label>Nome da ONG:</label>
+      <input type="text" name="nome_ong" required>
+    </div>
+
+    <div>
+      <label>E-mail:</label>
+      <input type="email" name="email" required>
+    </div>
+
+    <div>
+      <label>CNPJ:</label>
+      <input type="text" name="cnpj" required>
+    </div>
+
+    <div>
+      <label>Número de celular:</label>
+      <input type="tel" name="celular" required>
+    </div>
+
+    <div>
+      <label>Senha:</label>
+      <div class="password-field">
+        <input type="password" name="senha" id="senha" required>
+        <svg onclick="togglePassword('senha')" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg>
+      </div>
+    </div>
+
+    <div>
+      <label>Confirme sua senha:</label>
+      <div class="password-field">
+        <input type="password" name="confirma_senha" id="confirma_senha" required>
+        <svg onclick="togglePassword('confirma_senha')" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg>
+      </div>
+    </div>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <script>
+    function togglePassword(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === "password" ? "text" : "password";
+    }
+  </script>
+
+</body>
+</html>

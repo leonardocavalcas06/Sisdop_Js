@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SISDOP - Cadastro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <img src="logo sisdop.png" alt="Logo SISDOP" class="logo">
+    <h2>Crie sua conta</h2>
+
+    <div class="tabs">
+      <button id="btnUsuario" class="active">Usuário</button>
+      <button id="btnEmpresa">Empresa</button>
+    </div>
+
+    <form id="formUsuario" class="cadastroForm">
+      <input type="text" id="nomeUsuario" placeholder="Nome completo" required />
+      <input type="email" id="emailUsuario" placeholder="E-mail" required />
+      <input type="password" id="senhaUsuario" placeholder="Senha" required />
+      <button type="submit">Cadastrar Usuário</button>
+    </form>
+
+    <form id="formEmpresa" class="cadastroForm hidden">
+      <input type="text" id="nomeEmpresa" placeholder="Nome da empresa" required />
+      <input type="email" id="emailEmpresa" placeholder="E-mail corporativo" required />
+      <input type="password" id="senhaEmpresa" placeholder="Senha" required />
+      <input type="text" id="cnpjEmpresa" placeholder="CNPJ" required />
+      <button type="submit">Cadastrar Empresa</button>
+    </form>
+
+    <p class="link"><a href="index.html">Voltar para o login</a></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

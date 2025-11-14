@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seleção de Cadastro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .logo {
+      position: absolute;
+      top: 55px;
+      left: 55px;
+      width: 225px;
+    }
+
+    h2 {
+      margin-top: 120px;
+      color: #000;
+    }
+
+    .options {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      margin-top: 60px;
+    }
+
+    .option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+
+    .option:hover {
+      transform: scale(1.05);
+    }
+
+    .icon {
+      background-color: #008000;
+      border-radius: 50%;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .icon svg {
+      width: 70px;
+      height: 70px;
+      stroke: #fff;
+      stroke-width: 3;
+      fill: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo no canto superior esquerdo -->
+  <img src="logo sisdop.png" alt="Logo SISDOP" class="logo">
+
+  <!-- Título -->
+  <h2>Selecione o tipo de cadastro:</h2>
+
+  <!-- Opções -->
+  <div class="options">
+    <!-- Usuário -->
+    <a href="cadastro_usuario.html" class="option">
+      <div class="icon">
+        <!-- Ícone de pessoa -->
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+        </svg>
+      </div>
+      Usuário
+    </a>
+
+    <!-- Empresa -->
+    <a href="cadastro_empresa.html" class="option">
+      <div class="icon">
+        <!-- Ícone de pasta/mala -->
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="7" width="18" height="13" rx="2" ry="2"/>
+          <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+        </svg>
+      </div>
+      Empresa
+    </a>
+  </div>
+
+</body>
+</html>
